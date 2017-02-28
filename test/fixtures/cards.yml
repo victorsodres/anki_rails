@@ -1,0 +1,8 @@
+# <% 12.times do |n| %>
+# <% 24.times do |y| %>
+# card_<%= n %>_<%= y %>:
+#   front: <%= "FRONT #{n}/#{y}" %>
+#   back: <%= "BACK #{n}/#{y}" %>
+#   deck: <%= "deck_#{n}" %>
+# <% end %>
+# <% end %>
