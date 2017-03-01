@@ -26,7 +26,7 @@ class SessionController < ApplicationController
 
   private
   def authenticate_user(auth)
-    @user = User.find_by(full_name: auth[0]).try(:authenticate, auth[1])
+    @user = User.find_by(email: auth[0]).try(:authenticate, auth[1])
     session[:current_user_id] = @user.id
     session[:current_user_token] = @user['token']
   end

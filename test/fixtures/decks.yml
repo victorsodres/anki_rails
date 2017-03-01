@@ -1,5 +1,5 @@
 <% 6.times do |i| %>
-<% 12.times do |n| %>
+<% 3.times do |n| %>
 deck_<%= i %>_<%= n %>:
   title: <%= "Example title #{i}/#{n}" %>
   description: <%= "Example content #{i}/#{n}" %>

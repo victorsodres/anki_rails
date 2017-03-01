@@ -2,7 +2,7 @@ class DecksController < ApplicationController
   before_action :require_login
 
   def index
-    decks = Deck.find_by(user_id: session[:current_user_id]) || []
+    decks = Deck.where("user_id = ?", session[:current_user_id]) || []
     render json: decks
   end
 
