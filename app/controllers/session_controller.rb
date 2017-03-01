@@ -1,15 +1,16 @@
 
-class TokenController < ApplicationController
+class SessionController < ApplicationController
 
   def destroy
+    reset_session
   end
 
   def show
-    @user = User.find_by(token: params[:token])
+    @user = User.find_by(id: session[:current_user_id])
     if @user
-      render json: { sessionToken: @user['token'], user: @user['full_name'] }
+      render json: { user: @user['full_name'] }
     else
-      render status: :not_authorized
+      render status: :unauthorized
     end
   end
 
@@ -20,12 +21,14 @@ class TokenController < ApplicationController
 
     authenticate_user(auth)
 
-    render json: { sessionToken: @user['token'], user: auth[0] }
+    render json: { user: auth[0] }
   end
 
   private
   def authenticate_user(auth)
     @user = User.find_by(full_name: auth[0]).try(:authenticate, auth[1])
+    session[:current_user_id] = @user.id
+    session[:current_user_token] = @user['token']
   end
 
 end
