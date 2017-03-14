@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :decks
   resources :cards
 
+  post '/decks/:id_deck/cards', to: 'cards#create'
+  patch '/decks/:id_deck/cards/:id', to: 'cards#update'
+
   post '/session', to: 'session#create'
   get '/session', to: 'session#show'
   delete '/session', to: 'session#destroy'

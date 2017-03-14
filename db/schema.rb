@@ -10,15 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222023400) do
+ActiveRecord::Schema.define(version: 20170304045115) do
 
   create_table "cards", force: :cascade do |t|
     t.integer  "deck_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.string   "front"
     t.string   "back"
     t.text     "description"
+    t.float    "days_between_reviews"
+    t.datetime "date_last_reviewed"
+    t.float    "difficulty"
     t.index ["deck_id"], name: "index_cards_on_deck_id"
   end
 
